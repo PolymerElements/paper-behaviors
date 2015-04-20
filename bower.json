@@ -1,0 +1,11 @@
+{
+  "name": "paper-behaviors",
+  "private": true,
+  "dependencies": {
+    "polymer": "Polymer/polymer#0.8-preview",
+    "iron-state-behaviors": "PolymerElements/iron-state-behaviors#master"
+  },
+  "devDependencies": {
+    "webcomponentsjs": "webcomponents/webcomponentsjs#^0.6.0"
+  }
+}
