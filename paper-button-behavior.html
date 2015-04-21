@@ -26,7 +26,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       var e = 1;
       if (this.disabled || !this.raised) {
         e = 0;
-      } else if (this.active) {
+      } else if (this.active || this.pressed) {
         e = 2;
       } else if (this.focused) {
         e = 3;
