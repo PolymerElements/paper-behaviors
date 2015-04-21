@@ -6,6 +6,7 @@
     "iron-state-behaviors": "PolymerElements/iron-state-behaviors#master"
   },
   "devDependencies": {
-    "webcomponentsjs": "webcomponents/webcomponentsjs#^0.6.0"
+    "webcomponentsjs": "webcomponents/webcomponentsjs#^0.6.0",
+    "paper-card": "PolymerElements/paper-card#master"
   }
 }
