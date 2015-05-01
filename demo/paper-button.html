@@ -9,7 +9,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 -->
 
 <link rel="import" href="../../polymer/polymer.html">
-<link rel="import" href="../../paper-card/paper-card.html">
+<link rel="import" href="../../paper-material/paper-material.html">
 <link rel="import" href="../paper-button-behavior.html">
 
 <dom-module id="paper-button">
@@ -30,7 +30,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       cursor: pointer;
     }
 
-    paper-card {
+    paper-material {
       border-radius: inherit;
       padding: 16px;
     }
@@ -50,9 +50,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
   <template>
 
-    <paper-card class="content" elevation="[[_elevation]]" animated>
+    <paper-material class="content" elevation="[[_elevation]]" animated>
       <content></content>
-    </paper-card>
+    </paper-material>
 
   </template>
 
