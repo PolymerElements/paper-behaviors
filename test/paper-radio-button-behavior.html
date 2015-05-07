@@ -10,52 +10,52 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 -->
 
 <html>
-  <head>
-    <title>paper-radio-button-behavior</title>
+<head>
+  <title>paper-radio-button-behavior</title>
 
-    <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
-    <script src="../../web-component-tester/browser.js"></script>
-    <script src="../../test-fixture/test-fixture-mocha.js"></script>
-    <script src="../../iron-test-helpers/mock-interactions.js"></script>
+  <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+  <script src="../../web-component-tester/browser.js"></script>
+  <script src="../../test-fixture/test-fixture-mocha.js"></script>
+  <script src="../../iron-test-helpers/mock-interactions.js"></script>
 
-    <link rel="import" href="../../polymer/polymer.html">
-    <link rel="import" href="../../test-fixture/test-fixture.html">
-    <link rel="import" href="test-radio-button.html">
-  </head>
-  <body>
+  <link rel="import" href="../../polymer/polymer.html">
+  <link rel="import" href="../../test-fixture/test-fixture.html">
+  <link rel="import" href="test-radio-button.html">
+</head>
+<body>
 
-    <test-fixture id="basic">
-      <template>
-        <test-radio-button></test-radio-button>
-      </template>
-    </test-fixture>
+  <test-fixture id="basic">
+    <template>
+      <test-radio-button></test-radio-button>
+    </template>
+  </test-fixture>
 
-    <script>
-      suite('basic', function() {
-        var button;
-        var ink;
+  <script>
+    suite('basic', function() {
+      var button;
+      var ink;
 
-        setup(function() {
-          button = fixture('basic');
-          ink = button.querySelector('paper-ripple');
-          MockInteractions.blur(button);
-        });
-
-        test('normal (no states)', function() {
-          assert.isFalse(button.focused);
-          assert.isFalse(ink._animating);
-          assert.equal(ink.ripples.length, 0);
-        });
-
-        test('receives focus', function() {
-          MockInteractions.focus(button);
-
-          assert.isTrue(button.focused);
-          assert.isTrue(ink._animating);
-          assert.equal(ink.ripples.length, 1);
-        });
+      setup(function() {
+        button = fixture('basic');
+        ink = button.querySelector('paper-ripple');
+        MockInteractions.blur(button);
       });
-    </script>
 
-  </body>
+      test('normal (no states)', function() {
+        assert.isFalse(button.focused);
+        assert.isFalse(ink._animating);
+        assert.equal(ink.ripples.length, 0);
+      });
+
+      test('receives focus', function() {
+        MockInteractions.focus(button);
+
+        assert.isTrue(button.focused);
+        assert.isTrue(ink._animating);
+        assert.equal(ink.ripples.length, 1);
+      });
+    });
+  </script>
+
+</body>
 </html>
