@@ -23,7 +23,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   :host(:focus) {
     outline: none
   }
-  
+
   #radioContainer {
     display: inline-block;
     position: relative;
@@ -100,6 +100,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       behaviors: [
         Polymer.PaperRadioButtonBehavior
       ],
+
+      hostAttributes: {
+        role: 'radio'
+      },
 
       ready: function() {
         this.toggles = true;

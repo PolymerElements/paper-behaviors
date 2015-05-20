@@ -36,7 +36,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     }
 
     :host([disabled]) {
-      opacity: 0.3;
+      background-color: #888;
       pointer-events: none;
     }
 
@@ -63,6 +63,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       behaviors: [
         Polymer.PaperButtonBehavior
       ],
+
+      hostAttributes: {
+        role: 'button'
+      },
 
       ready: function() {
         this.raised = true;
