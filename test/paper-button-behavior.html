@@ -88,7 +88,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         test('activated by tap', function(done) {
           MockInteractions.downAndUp(button, function() {
             try {
-              assert.equal(button._elevation, 2);
+              assert.equal(button._elevation, 4);
               done();
             } catch (e) {
               done(e);
@@ -98,7 +98,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
         test('receives focused', function() {
           MockInteractions.focus(button);
-          assert.equal(button._elevation, 3);
+          assert.equal(button._elevation, 2);
         })
       });
 
