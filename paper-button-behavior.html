@@ -37,8 +37,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           e = 0;
         } else if (this.active || this.pressed) {
           e = 4;
-        } else if (this.focused) {
-          e = 2;
+        } else if (this.receivedFocusFromKeyboard) {
+          e = 3;
         }
         this._elevation = e;
       }
