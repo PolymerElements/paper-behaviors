@@ -13,27 +13,19 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 <dom-module id="test-button">
 
+  <template>
+    <content></content>
+  </template>
+
   <script>
 
     Polymer({
 
+      is: 'test-button',
+
       behaviors: [
         Polymer.PaperButtonBehavior
-      ],
-
-      properties: {
-
-        raised: {
-          type: Boolean,
-          value: false,
-          observer: '_buttonStateChanged'
-        }
-
-      },
-
-      _buttonStateChanged: function() {
-        this._calculateElevation();
-      }
+      ]
 
     });
 

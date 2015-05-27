@@ -30,59 +30,33 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     </template>
   </test-fixture>
 
-  <test-fixture id="raised">
-    <template>
-      <test-button raised toggles></test-button>
-    </template>
-  </test-fixture>
-
   <script>
     suite('basic', function() {
       var button;
 
-      suite('when raised is false', function() {
-        setup(function() {
-          button = fixture('basic');
-        });
-
-        test('normal (no states)', function() {
-          assert.equal(button._elevation, 0);
-        });
-
-        test('set disabled property', function() {
-          button.disabled = true;
-          assert.equal(button._elevation, 0);
-        });
-
-        test('activated by tap', function(done) {
-          MockInteractions.downAndUp(button, function() {
-            try {
-              assert.equal(button._elevation, 0);
-              done();
-            } catch (e) {
-              done(e);
-            }
-          });
-        });
-
-        test('receives focused', function() {
-          MockInteractions.focus(button);
-          assert.equal(button._elevation, 0);
-        })
+      setup(function() {
+        button = fixture('basic');
       });
 
-      suite('when raised is true', function() {
+      test('normal (no states)', function() {
+        assert.equal(button._elevation, 1);
+      });
+
+      test('set disabled property', function() {
+        button.disabled = true;
+        assert.equal(button._elevation, 0);
+      });
+
+      test('pressed and released', function() {
+        MockInteractions.down(button);
+        assert.equal(button._elevation, 4);
+        MockInteractions.up(button);
+        assert.equal(button._elevation, 1);
+      });
+
+      suite('a button with toggles', function() {
         setup(function() {
-          button = fixture('raised');
-        });
-
-        test('normal (no states)', function() {
-          assert.equal(button._elevation, 1);
-        });
-
-        test('set disabled property', function() {
-          button.disabled = true;
-          assert.equal(button._elevation, 0);
+          button.toggles = true;
         });
 
         test('activated by tap', function(done) {
@@ -95,13 +69,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             }
           });
         });
-
-        test('receives focused', function() {
-          MockInteractions.focus(button);
-          assert.equal(button._elevation, 2);
-        })
       });
 
+      test('receives focused', function() {
+        MockInteractions.focus(button);
+        assert.equal(button._elevation, 3);
+      });
     });
   </script>
 
