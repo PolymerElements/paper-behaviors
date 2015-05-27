@@ -19,10 +19,18 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     {
       properties: {
 
+        /**
+         * True if the input device that caused the element to receive focus
+         * was a keyboard.
+         */
+        receivedFocusFromKeyboard: {
+          type: Boolean,
+          computed: '_computeReceivedFocusFromKeyboard(focused)'
+        },
+
         _elevation: {
           type: Number
         }
-
       },
 
       hostAttributes: {
@@ -36,10 +44,14 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           e = 0;
         } else if (this.active || this.pressed) {
           e = 4;
-        } else if (this.focused) {
-          e = 2;
+        } else if (this.receivedFocusFromKeyboard) {
+          e = 3;
         }
         this._elevation = e;
+      },
+
+      _computeReceivedFocusFromKeyboard: function(focused) {
+        return !this.pointerDown && focused;
       }
     }
   );
