@@ -10,16 +10,29 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 <link rel="import" href="../polymer/polymer.html">
 <link rel="import" href="../iron-behaviors/iron-button-state.html">
-<link rel="import" href="../iron-behaviors/iron-control-state.html">
-<link rel="import" href="paper-focus-ripple-behavior.html">
 
 <script>
 
   /** @polymerBehavior */
-  Polymer.PaperRadioButtonBehavior = [
+  Polymer.PaperFocusRippleBehavior = [
     Polymer.IronButtonState,
-    Polymer.IronControlState,
-    Polymer.PaperFocusRippleBehavior
-  ];
+    {
+      observers: [
+        '_focusedChanged(receivedFocusFromKeyboard)'
+      ],
+
+      _focusedChanged: function(receivedFocusFromKeyboard) {
+        if (!this.$.ink)
+          return;
+
+        if (receivedFocusFromKeyboard) {
+          var rect = this.$.ink.getBoundingClientRect();
+          this.$.ink.downAction();
+        } else {
+          this.$.ink.upAction();
+        }
+      }
+    }
+  ]
 
 </script>

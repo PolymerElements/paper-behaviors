@@ -11,7 +11,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 <html>
 <head>
-  <title>paper-radio-button-behavior</title>
+  <title>paper-button-behavior</title>
 
   <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
   <script src="../../web-component-tester/browser.js"></script>
@@ -43,17 +43,36 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
       test('normal (no states)', function() {
         assert.isFalse(button.focused);
+        assert.isFalse(button.receivedFocusFromKeyboard);
         assert.isFalse(ink.animating);
         assert.equal(ink.ripples.length, 0);
       });
 
-      test('receives focus', function() {
+      test('clicking does not show a ripple', function() {
+        MockInteractions.down(button);
         MockInteractions.focus(button);
 
         assert.isTrue(button.focused);
+        assert.isTrue(button.pointerDown);
+        assert.isFalse(button.receivedFocusFromKeyboard);
+
+        assert.isFalse(ink.animating);
+        assert.equal(ink.ripples.length, 0);
+      });
+
+      test('keyboard interaction shows a ripple', function() {
+        // Tab
+        MockInteractions.keyDownOn(button, 9);
+        MockInteractions.focus(button);
+
+        assert.isTrue(button.focused);
+        assert.isFalse(button.pointerDown);
+        assert.isTrue(button.receivedFocusFromKeyboard);
+
         assert.isTrue(ink.animating);
         assert.equal(ink.ripples.length, 1);
       });
+
     });
   </script>
 
