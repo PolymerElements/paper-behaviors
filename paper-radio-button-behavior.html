@@ -17,14 +17,14 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   Polymer.PaperRadioButtonInk = {
 
     observers: [
-      '_focusedChanged(focused)'
+      '_focusedChanged(receivedFocusFromKeyboard)'
     ],
 
-    _focusedChanged: function(focused) {
+    _focusedChanged: function(receivedFocusFromKeyboard) {
       if (!this.$.ink)
         return;
 
-      if (focused) {
+      if (receivedFocusFromKeyboard) {
         var rect = this.$.ink.getBoundingClientRect();
         this.$.ink.downAction();
       } else {
