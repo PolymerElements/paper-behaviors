@@ -21,7 +21,7 @@
     "type": "git",
     "url": "git://github.com/PolymerElements/paper-behaviors"
   },
-  "license": "MIT",
+  "license": "http://polymer.github.io/LICENSE.txt",
   "homepage": "https://github.com/PolymerElements/paper-behaviors",
   "dependencies": {
     "iron-behaviors": "PolymerElements/iron-behaviors#^0.9.0",
