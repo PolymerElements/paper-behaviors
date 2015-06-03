@@ -49,6 +49,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
       test('receives focus', function() {
         MockInteractions.focus(button);
+        MockInteractions.down(ink);
 
         assert.isTrue(button.focused);
         assert.isTrue(ink._animating);
