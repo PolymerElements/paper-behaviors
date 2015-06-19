@@ -28,8 +28,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       if (!this.$.ink) {
         return;
       }
-
-      this.$.ink.holdDown = receivedFocusFromKeyboard;
+      
+      this.async(function() {
+        this.$.ink.holdDown = receivedFocusFromKeyboard;
+      });
     }
 
   };
