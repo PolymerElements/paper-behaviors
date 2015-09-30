@@ -18,19 +18,36 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
     properties: {
 
-      _elevation: {
-        type: Number
+      /**
+       * The z-depth of this element, from 0-5. Setting to 0 will remove the
+       * shadow, and each increasing number greater than 0 will be "deeper"
+       * than the last.
+       *
+       * @attribute elevation
+       * @type number
+       * @default 1
+       */
+      elevation: {
+        type: Number,
+        reflectToAttribute: true
       }
 
     },
 
     observers: [
-      '_calculateElevation(focused, disabled, active, pressed, receivedFocusFromKeyboard)'
+      '_calculateElevation(focused, disabled, active, pressed, receivedFocusFromKeyboard)',
+      '_receivedInitialFocus(focused)',
+      '_computeKeyboardClass(receivedFocusFromKeyboard)'
     ],
 
     hostAttributes: {
       role: 'button',
-      tabindex: '0'
+      tabindex: '0',
+      animated: true
+    },
+
+    listeners: {
+      down: '_downAction'
     },
 
     _calculateElevation: function() {
@@ -42,7 +59,44 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       } else if (this.receivedFocusFromKeyboard) {
         e = 3;
       }
-      this._elevation = e;
+      this.elevation = e;
+    },
+
+    _computeKeyboardClass: function(receivedFocusFromKeyboard) {
+      this.classList.toggle('keyboard-focus', receivedFocusFromKeyboard);
+    },
+
+    _downAction: function(event) {
+      if (!this._ripple) {
+        this._makeRipple(event);
+      }
+    },
+
+    _receivedInitialFocus: function(focused) {
+      if (focused && !this._ripple) {
+        this._makeRipple();
+      }
+    },
+
+    _makeRipple: function(triggeringEvent) {
+      if (!this._ripple) {
+        this._ripple = document.createElement('paper-ripple');
+        Polymer.dom(this.root).appendChild(this._ripple);
+        if (triggeringEvent) {
+          Polymer.dom.flush();
+          this._ripple.downAction(triggeringEvent);
+        }
+      }
+    },
+
+    _handleSpaceKey: function(spacePressed) {
+      if (this._ripple) {
+        if (spacePressed) {
+          this._ripple.downAction();
+        } else {
+          this._ripple.upAction();
+        }
+      }
     }
   };
 
