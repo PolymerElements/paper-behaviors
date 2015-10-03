@@ -10,7 +10,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 <link rel="import" href="../polymer/polymer.html">
 <link rel="import" href="../iron-behaviors/iron-button-state.html">
-<link rel="import" href="../paper-ripple/paper-ripple.html">
+<link rel="import" href="paper-ripple-behavior.html">
 
 <script>
 
@@ -30,14 +30,14 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
        */
       elevation: {
         type: Number,
-        reflectToAttribute: true
+        reflectToAttribute: true,
+        readOnly: true
       }
 
     },
 
     observers: [
       '_calculateElevation(focused, disabled, active, pressed, receivedFocusFromKeyboard)',
-      '_receivedInitialFocus(focused)',
       '_computeKeyboardClass(receivedFocusFromKeyboard)'
     ],
 
@@ -45,10 +45,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       role: 'button',
       tabindex: '0',
       animated: true
-    },
-
-    listeners: {
-      down: '_downAction'
     },
 
     _calculateElevation: function() {
@@ -60,51 +56,20 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       } else if (this.receivedFocusFromKeyboard) {
         e = 3;
       }
-      this.elevation = e;
+      this._setElevation(e);
     },
 
     _computeKeyboardClass: function(receivedFocusFromKeyboard) {
       this.classList.toggle('keyboard-focus', receivedFocusFromKeyboard);
-    },
-
-    _downAction: function(event) {
-      if (!this._ripple) {
-        this._makeRipple(event);
-      }
-    },
-
-    _receivedInitialFocus: function(focused) {
-      if (focused && !this._ripple) {
-        this._makeRipple();
-      }
-    },
-
-    _makeRipple: function(triggeringEvent) {
-      if (!this._ripple) {
-        this._ripple = document.createElement('paper-ripple');
-        Polymer.dom(this.root).appendChild(this._ripple);
-        if (triggeringEvent) {
-          Polymer.dom.flush();
-          this._ripple.downAction(triggeringEvent);
-        }
-      }
-    },
-
-    _handleSpaceKey: function(spacePressed) {
-      if (this._ripple) {
-        if (spacePressed) {
-          this._ripple.downAction();
-        } else {
-          this._ripple.upAction();
-        }
-      }
     }
+
   };
 
   /** @polymerBehavior */
   Polymer.PaperButtonBehavior = [
     Polymer.IronButtonState,
     Polymer.IronControlState,
+    Polymer.PaperRippleBehavior,
     Polymer.PaperButtonBehaviorImpl
   ];
 

@@ -52,7 +52,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         assert.equal(button.elevation, 4);
         MockInteractions.up(button);
         assert.equal(button.elevation, 1);
-        assert.ok(button._ripple);
+        assert.ok(button.hasRipple());
       });
 
       suite('a button with toggles', function() {
@@ -64,7 +64,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           MockInteractions.downAndUp(button, function() {
             try {
               assert.equal(button.elevation, 4);
-              assert.ok(button._ripple);
+              assert.ok(button.hasRipple());
               done();
             } catch (e) {
               done(e);
@@ -76,7 +76,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       test('receives focused', function() {
         MockInteractions.focus(button);
         assert.equal(button.elevation, 3);
-        assert.ok(button._ripple);
+        assert.ok(button.hasRipple());
       });
     });
   </script>

@@ -1,0 +1,92 @@
+<!--
+@license
+Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../paper-ripple/paper-ripple.html">
+
+<script>
+
+  /** 
+   * `Polymer.PaperRippleBehavior` dynamically implements a ripple 
+   * when the element has focus via pointer or keyboard.
+   *
+   * NOTE: This behavior is intended to be used in conjunction with and after
+   * `Polymer.IronButtonState` and `Polymer.IronControlState`.
+   *
+   * @polymerBehavior Polymer.PaperRippleBehavior 
+   */
+  Polymer.PaperRippleBehavior = {
+
+    // when focused, ensure ripple
+    _buttonStateChanged: function() {
+      if (this.focused) {
+        this.ensureRipple();
+      }
+    },
+
+    // when pointer goes down, ensure ripple and press down at event 
+    _downHandler: function(event) {
+      Polymer.IronButtonStateImpl._downHandler.call(this, event);
+      if (this.pressed) {
+        this.ensureRipple(event);
+      }
+    },
+
+    // when space key goes down, ensure ripple and press down.
+    _spaceKeyDownHandler: function(event) {
+      Polymer.IronButtonStateImpl._spaceKeyDownHandler.call(this, event);
+      if (this.hasRipple()) {
+        this._ripple.downAction();
+      }
+    },
+
+    // when space key goes up, ensure ripple and press up.
+    _spaceKeyUpHandler: function(event) {
+      Polymer.IronButtonStateImpl._spaceKeyUpHandler.call(this, event);
+      if (this.hasRipple()) {
+        this._ripple.upAction();
+      }
+    },
+
+    // For startup efficiency we dynamically create the ripple on demand
+    // when needed. Here we ensure the ripple exists before interacting with it.
+    /**
+     * Ensures this element contains a ripple effect.
+     * * @param {event} triggeringEvent (optional) event that triggered the 
+     * ripple.
+     */
+    ensureRipple: function(triggeringEvent) {
+      if (!this.hasRipple()) {
+        this._ripple = this._createRipple();
+        var rippleContainer = this._rippleContainer || this.root;
+        if (rippleContainer) {
+          Polymer.dom(rippleContainer).appendChild(this._ripple);
+        }
+        if (triggeringEvent && rippleContainer.contains(event.target)) {
+          this._ripple.downAction(triggeringEvent);
+        }
+      }
+    },
+
+    /**
+     * Returns true if this element currently contains a ripple effect.
+     * * @return {boolean}
+     */
+    hasRipple: function() {
+      return Boolean(this._ripple);
+    },
+
+    _createRipple: function() {
+      return document.createElement('paper-ripple');
+    }
+
+  };
+
+</script>
