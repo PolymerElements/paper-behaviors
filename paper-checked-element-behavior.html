@@ -10,6 +10,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 <link rel="import" href="../polymer/polymer.html">
 <link rel="import" href="../iron-checked-element-behavior/iron-checked-element-behavior.html">
+<link rel="import" href="paper-inky-focus-behavior.html">
 
 <script>
 
@@ -22,20 +23,32 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   Polymer.PaperCheckedElementBehaviorImpl = {
 
     _checkedChanged: function() {
-        Polymer.IronCheckedElementBehaviorImpl._checkedChanged.call(this);
-        if (this.hasRipple()) {
-          if (this.checked) {
-            this._ripple.setAttribute('checked', '');
-          } else {
-            this._ripple.removeAttribute('checked');
-          }
+      Polymer.IronCheckedElementBehaviorImpl._checkedChanged.call(this);
+      if (this.hasRipple()) {
+        if (this.checked) {
+          this._ripple.setAttribute('checked', '');
+        } else {
+          this._ripple.removeAttribute('checked');
         }
       }
+    },
+
+    // button-behavior hook
+    _buttonStateChanged: function() {
+      Polymer.PaperRippleBehavior._buttonStateChanged.call(this);
+      if (this.disabled) {
+        return;
+      }
+      if (this.isAttached) {
+        this.checked = this.active;
+      }
+    }
 
   };
 
   /** @polymerBehavior Polymer.PaperCheckedElementBehavior */
   Polymer.PaperCheckedElementBehavior = [
+    Polymer.PaperInkyFocusBehavior,
     Polymer.IronCheckedElementBehavior,
     Polymer.PaperCheckedElementBehaviorImpl
   ];

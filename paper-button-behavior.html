@@ -61,6 +61,22 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
     _computeKeyboardClass: function(receivedFocusFromKeyboard) {
       this.classList.toggle('keyboard-focus', receivedFocusFromKeyboard);
+    },
+
+    // when space key goes down, ensure ripple and press down.
+    _spaceKeyDownHandler: function(event) {
+      Polymer.IronButtonStateImpl._spaceKeyDownHandler.call(this, event);
+      if (this.hasRipple()) {
+        this._ripple.uiDownAction();
+      }
+    },
+
+    // when space key goes up, ensure ripple and press up.
+    _spaceKeyUpHandler: function(event) {
+      Polymer.IronButtonStateImpl._spaceKeyUpHandler.call(this, event);
+      if (this.hasRipple()) {
+        this._ripple.uiUpAction();
+      }
     }
 
   };

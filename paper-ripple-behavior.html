@@ -24,6 +24,13 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
    */
   Polymer.PaperRippleBehavior = {
 
+    properties: {
+      noink: {
+        type: Boolean,
+        observer: '_noinkChanged'
+      }
+    },
+
     // when focused, ensure ripple
     _buttonStateChanged: function() {
       if (this.focused) {
@@ -39,22 +46,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       }
     },
 
-    // when space key goes down, ensure ripple and press down.
-    _spaceKeyDownHandler: function(event) {
-      Polymer.IronButtonStateImpl._spaceKeyDownHandler.call(this, event);
-      if (this.hasRipple()) {
-        this._ripple.downAction();
-      }
-    },
-
-    // when space key goes up, ensure ripple and press up.
-    _spaceKeyUpHandler: function(event) {
-      Polymer.IronButtonStateImpl._spaceKeyUpHandler.call(this, event);
-      if (this.hasRipple()) {
-        this._ripple.upAction();
-      }
-    },
-
     // For startup efficiency we dynamically create the ripple on demand
     // when needed. Here we ensure the ripple exists before interacting with it.
     /**
@@ -65,14 +56,27 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     ensureRipple: function(triggeringEvent) {
       if (!this.hasRipple()) {
         this._ripple = this._createRipple();
+        this._ripple.noink = this.noink;
         var rippleContainer = this._rippleContainer || this.root;
         if (rippleContainer) {
           Polymer.dom(rippleContainer).appendChild(this._ripple);
         }
-        if (triggeringEvent && rippleContainer.contains(event.target)) {
-          this._ripple.downAction(triggeringEvent);
+        var domContainer = rippleContainer === this.shadyRoot ? this : 
+          rippleContainer;
+        if (triggeringEvent && domContainer.contains(event.target)) {
+          this._ripple.uiDownAction(triggeringEvent);
         }
       }
+    },
+
+    /**
+     * Returns the <paper-ripple> element used by this element to create
+     * ripple effects. The element's ripple is created on demand, when necessary
+     * and accessing this property will force the ripple to be created.
+     */
+    get ripple() {
+      this.ensureRipple();
+      return this._ripple;
     },
 
     /**
@@ -85,6 +89,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
     _createRipple: function() {
       return document.createElement('paper-ripple');
+    },
+
+    _noinkChanged: function(noink) {
+      if (this.hasRipple()) {
+        this._ripple.noink = noink;
+      }
     }
 
   };
