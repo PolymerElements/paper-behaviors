@@ -22,6 +22,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
    */
   Polymer.PaperCheckedElementBehaviorImpl = {
 
+    /**
+     * Synchronizes the element's checked state with its ripple effect.
+     */
     _checkedChanged: function() {
       Polymer.IronCheckedElementBehaviorImpl._checkedChanged.call(this);
       if (this.hasRipple()) {
@@ -33,7 +36,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       }
     },
 
-    // button-behavior hook
+    /**
+     * Synchronizes the element's `active` and `checked` state.
+     */
     _buttonStateChanged: function() {
       Polymer.PaperRippleBehavior._buttonStateChanged.call(this);
       if (this.disabled) {
