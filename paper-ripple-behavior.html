@@ -81,10 +81,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     /**
      * Returns the `<paper-ripple>` element used by this element to create
      * ripple effects. The element's ripple is created on demand, when
-     * necessary; however, and accessing this property will force the 
+     * necessary, and calling this method will force the 
      * ripple to be created.
      */
-    get ripple() {
+    getRipple: function() {
       this._ensureRipple();
       return this._ripple;
     },

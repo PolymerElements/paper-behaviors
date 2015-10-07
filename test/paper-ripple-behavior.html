@@ -60,8 +60,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         assert.isFalse(ripple.hasRipple());
       });
 
-      test('accessing ripple generates ripple', function() {
-        assert.ok(ripple.ripple);
+      test('calling getRipple returns ripple', function() {
+        assert.ok(ripple.getRipple());
       });
 
       test('focus generates ripple', function() {
