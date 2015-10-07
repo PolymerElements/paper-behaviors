@@ -63,7 +63,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       this.classList.toggle('keyboard-focus', receivedFocusFromKeyboard);
     },
 
-    // when space key goes down, ensure ripple and press down.
+    /**
+     * In addition to `IronButtonState` behavior, when space key goes down, 
+     * create a ripple down effect.
+     */
     _spaceKeyDownHandler: function(event) {
       Polymer.IronButtonStateImpl._spaceKeyDownHandler.call(this, event);
       if (this.hasRipple()) {
@@ -71,7 +74,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       }
     },
 
-    // when space key goes up, ensure ripple and press up.
+    /**
+     * In addition to `IronButtonState` behavior, when space key goes up, 
+     * create a ripple up effect.
+     */
     _spaceKeyUpHandler: function(event) {
       Polymer.IronButtonStateImpl._spaceKeyUpHandler.call(this, event);
       if (this.hasRipple()) {

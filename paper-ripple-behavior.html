@@ -41,7 +41,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
      */
     _buttonStateChanged: function() {
       if (this.focused) {
-        this._ensureRipple();
+        this.ensureRipple();
       }
     },
 
@@ -52,17 +52,17 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     _downHandler: function(event) {
       Polymer.IronButtonStateImpl._downHandler.call(this, event);
       if (this.pressed) {
-        this._ensureRipple(event);
+        this.ensureRipple(event);
       }
     },
 
     /**
      * Ensures this element contains a ripple effect. For startup efficiency 
      * the ripple effect is dynamically on demand when needed.
-     * * @param {event} triggeringEvent (optional) event that triggered the 
+     * @param {event} triggeringEvent (optional) event that triggered the 
      * ripple.
      */
-    _ensureRipple: function(triggeringEvent) {
+    ensureRipple: function(triggeringEvent) {
       if (!this.hasRipple()) {
         this._ripple = this._createRipple();
         this._ripple.noink = this.noink;
@@ -85,13 +85,13 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
      * ripple to be created.
      */
     getRipple: function() {
-      this._ensureRipple();
+      this.ensureRipple();
       return this._ripple;
     },
 
     /**
      * Returns true if this element currently contains a ripple effect.
-     * * @return {boolean}
+     * @return {boolean}
      */
     hasRipple: function() {
       return Boolean(this._ripple);
