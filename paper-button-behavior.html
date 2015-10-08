@@ -10,6 +10,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 <link rel="import" href="../polymer/polymer.html">
 <link rel="import" href="../iron-behaviors/iron-button-state.html">
+<link rel="import" href="../iron-form-element-behavior/iron-form-element-behavior.html">
 <link rel="import" href="paper-ripple-behavior.html">
 
 <script>
@@ -64,7 +65,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     },
 
     /**
-     * In addition to `IronButtonState` behavior, when space key goes down, 
+     * In addition to `IronButtonState` behavior, when space key goes down,
      * create a ripple down effect.
      */
     _spaceKeyDownHandler: function(event) {
@@ -75,7 +76,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     },
 
     /**
-     * In addition to `IronButtonState` behavior, when space key goes up, 
+     * In addition to `IronButtonState` behavior, when space key goes up,
      * create a ripple up effect.
      */
     _spaceKeyUpHandler: function(event) {
@@ -92,6 +93,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     Polymer.IronButtonState,
     Polymer.IronControlState,
     Polymer.PaperRippleBehavior,
+    Polymer.IronFormElementBehavior,
     Polymer.PaperButtonBehaviorImpl
   ];
 
