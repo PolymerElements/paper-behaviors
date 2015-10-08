@@ -72,7 +72,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         }
         var domContainer = rippleContainer === this.shadyRoot ? this : 
           rippleContainer;
-        if (triggeringEvent && domContainer.contains(event.target)) {
+        if (triggeringEvent && domContainer.contains(triggeringEvent.target)) {
           this._ripple.uiDownAction(triggeringEvent);
         }
       }
