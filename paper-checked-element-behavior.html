@@ -33,6 +33,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         } else {
           this._ripple.removeAttribute('checked');
         }
+        this.value=this.checked;
       }
     },
 
@@ -47,6 +48,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       if (this.isAttached) {
         this.checked = this.active;
       }
+      this.value=this.active;
     }
 
   };
