@@ -12,9 +12,7 @@ Edit this file, and the bot will squash your changes :)
 _[Demo and API Docs](https://elements.polymer-project.org/elements/paper-behaviors)_
 
 
-##Polymer.PaperButtonBehavior
-
-
+<!-- No docs for Polymer.PaperButtonBehavior found. -->
 
 ##Polymer.PaperRippleBehavior
 
