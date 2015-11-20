@@ -8,263 +8,48 @@ The complete set of contributors may be found at http://polymer.github.io/CONTRI
 Code distributed by Google as part of the polymer project is also
 subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
 -->
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Ripple in Shadow conditions</title>
-  <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
-  <script src="../../web-component-tester/browser.js"></script>
-  <script src="../../iron-test-helpers/mock-interactions.js"></script>
-
-  <link rel="import" href="../../polymer/polymer.html">
-  <link rel="import" href="../../iron-behaviors/iron-button-state.html">
-  <link rel="import" href="../paper-ripple-behavior.html">
-</head>
-<body>
-  <style>
-    #source {
-      height: 25px;
-      width: 50px;
-      background: green;
-    }
-  </style>
-
-  <dom-module id="sd-ripple">
-    <template>
-      <style>
-        :host {
-          display: block;
-          width: 200px;
-        }
-        #separate, #wrapper {
-          height: 50px;
-        }
-        #separate {
-          background: blue;
-        }
-        #wrapper {
-          background: red;
-        }
-      </style>
-      <div id="separate">
-        <div id="target">
-          Internal Text Node
-        </div>
+<link rel="import" href="../../polymer/polymer.html">
+<link rel="import" href="../../iron-behaviors/iron-button-state.html">
+<link rel="import" href="../paper-ripple-behavior.html">
+<dom-module id="sd-ripple">
+  <template>
+    <style>
+      :host {
+        display: block;
+        width: 200px;
+      }
+      #separate, #wrapper {
+        height: 50px;
+      }
+      #separate {
+        background: blue;
+      }
+      #wrapper {
+        background: red;
+      }
+      #wrapper > ::content  #source {
+        height: 25px;
+        width: 50px;
+        background: green;
+      }
+    </style>
+    <div id="separate">
+      <div id="target">
+        Internal Text Node
       </div>
-      <div id="wrapper">
-        <content id="content"></content>
-      </div>
-    </template>
-    <script>
-      HTMLImports.whenReady(function() {
-        Polymer({
-          is: 'sd-ripple',
-          behaviors: [
-            Polymer.IronButtonState,
-            Polymer.IronControlState,
-            Polymer.PaperRippleBehavior
-          ]
-        });
-      });
-  </script>
-  </dom-module>
-
-  <test-fixture id="basic">
-    <template>
-      <sd-ripple></sd-ripple>
-    </template>
-  </test-fixture>
-
-  <test-fixture id="text">
-    <template>
-      <sd-ripple>Howdy!</sd-ripple>
-    </template>
-  </test-fixture>
-
-  <test-fixture id="element">
-    <template>
-      <sd-ripple>
-        <div id="source">source!</div>
-      </sd-ripple>
-    </template>
-  </test-fixture>
-
+    </div>
+    <div id="wrapper">
+      <content id="content"></content>
+    </div>
+  </template>
   <script>
-    suite('Paper Ripple Behavior - correct targeting', function() {
-      var ripple;
-
-      function check(host, node, expected, msg) {
-        var ripple = host.getRipple();
-        Polymer.dom.flush();
-        MockInteractions.down(node);
-        assert.equal(ripple.ripples.length > 0, expected, msg);
-        MockInteractions.up(node);
-      }
-
-      function checkLocation(host, node, location, expected, msg) {
-        var ripple = host.getRipple();
-        MockInteractions.down(node, location);
-        assert.equal(ripple.ripples.length > 0, expected, msg);
-        MockInteractions.up(node);
-      }
-
-      var timeout = 500;
-
-      suite('basic', function() {
-        setup(function() {
-          ripple = fixture('basic');
-        });
-
-        test('container = host', function(done) {
-          check(ripple, ripple, true, 'ripple');
-          setTimeout(function() {
-            check(ripple, ripple.$.wrapper, true, '#wrapper');
-            setTimeout(function() {
-              check(ripple, ripple.$.separate, true, '#separate')
-              done();
-            }, timeout);
-          }, timeout);
-        });
-
-        test('container = wrapper', function(done) {
-          ripple._rippleContainer = ripple.$.wrapper;
-
-          check(ripple, ripple, false, 'ripple');
-          setTimeout(function() {
-            check(ripple, ripple.$.wrapper, true, '#wrapper');
-            setTimeout(function() {
-              check(ripple, ripple.$.separate, false, '#separate')
-              done();
-            }, timeout);
-          }, timeout);
-        });
-
-        test('container = separate', function(done) {
-          ripple._rippleContainer = ripple.$.separate;
-
-          check(ripple, ripple, false, 'ripple');
-          setTimeout(function() {
-            check(ripple, ripple.$.wrapper, false, '#wrapper');
-            setTimeout(function() {
-              check(ripple, ripple.$.separate, true, '#separate')
-              done();
-            }, timeout);
-          }, timeout);
-        });
-      });
-
-      suite('distributed text', function() {
-        var textLocation;
-        setup(function() {
-          ripple = fixture('text');
-          var r = document.createRange();
-          r.selectNode(Polymer.dom(ripple.$.content).getDistributedNodes()[0]);
-          textLocation = MockInteractions.middleOfNode(r);
-        });
-
-        test('container = host', function(done) {
-          check(ripple, ripple, true, 'ripple');
-          setTimeout(function() {
-            check(ripple, ripple.$.wrapper, true, '#wrapper');
-            setTimeout(function() {
-              check(ripple, ripple.$.separate, true, '#separate')
-              setTimeout(function() {
-                checkLocation(ripple, ripple.$.wrapper, textLocation, true, 'text');
-                done();
-              }, timeout);
-            }, timeout);
-          }, timeout);
-        });
-
-        test('container = wrapper', function(done) {
-          ripple._rippleContainer = ripple.$.wrapper;
-
-          check(ripple, ripple, false, 'ripple');
-          setTimeout(function() {
-            check(ripple, ripple.$.wrapper, true, '#wrapper');
-            setTimeout(function() {
-              check(ripple, ripple.$.separate, false, '#separate')
-              setTimeout(function() {
-                checkLocation(ripple, ripple.$.wrapper, textLocation, true, 'text');
-                done();
-              }, timeout);
-            }, timeout);
-          }, timeout);
-        });
-
-        test('container = separate', function(done) {
-          ripple._rippleContainer = ripple.$.separate;
-
-          check(ripple, ripple, false, 'ripple');
-          setTimeout(function() {
-            check(ripple, ripple.$.wrapper, false, '#wrapper');
-            setTimeout(function() {
-              check(ripple, ripple.$.separate, true, '#separate')
-              setTimeout(function() {
-                checkLocation(ripple, ripple.$.wrapper, textLocation, false, 'text');
-                done();
-              }, timeout);
-            }, timeout);
-          }, timeout);
-        });
-      });
-
-      suite('distributed element', function() {
-        var source;
-
-        setup(function() {
-          ripple = fixture('element');
-          source = Polymer.dom(ripple).querySelector('#source');
-        });
-
-        test('container = host', function(done) {
-          check(ripple, ripple, true, 'ripple');
-          setTimeout(function() {
-            check(ripple, ripple.$.wrapper, true, '#wrapper');
-            setTimeout(function() {
-              check(ripple, ripple.$.separate, true, '#separate')
-              setTimeout(function() {
-                check(ripple, source, true, '#source');
-                done();
-              }, timeout);
-            }, timeout);
-          }, timeout);
-        });
-
-        test('container = wrapper', function(done) {
-          ripple._rippleContainer = ripple.$.wrapper;
-
-          check(ripple, ripple, false, 'ripple');
-          setTimeout(function() {
-            check(ripple, ripple.$.wrapper, true, '#wrapper');
-            setTimeout(function() {
-              check(ripple, ripple.$.separate, false, '#separate')
-              setTimeout(function() {
-                check(ripple, source, true, '#source');
-                done();
-              }, timeout);
-            }, timeout);
-          }, timeout);
-        });
-
-        test('container = seperate', function(done) {
-          ripple._rippleContainer = ripple.$.separate;
-
-          check(ripple, ripple, false, 'ripple');
-          setTimeout(function() {
-            check(ripple, ripple.$.wrapper, false, '#wrapper');
-            setTimeout(function() {
-              check(ripple, ripple.$.separate, true, '#separate')
-              setTimeout(function() {
-                check(ripple, source, false, '#source');
-                done();
-              }, timeout);
-            }, timeout);
-          }, timeout);
-        });
-      });
+    Polymer({
+      is: 'sd-ripple',
+      behaviors: [
+        Polymer.IronButtonState,
+        Polymer.IronControlState,
+        Polymer.PaperRippleBehavior
+      ]
     });
   </script>
-
-</body>
-</html>
+</dom-module>
