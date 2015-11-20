@@ -12,7 +12,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <head>
   <meta charset="UTF-8">
   <title>Ripple in Shadow conditions</title>
-  <script src="../../webcomponentsjs/webcomponents.js"></script>
+  <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
   <script src="../../web-component-tester/browser.js"></script>
   <script src="../../iron-test-helpers/mock-interactions.js"></script>
 
@@ -34,6 +34,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       <style>
         :host {
           display: block;
+          width: 200px;
         }
         #separate, #wrapper {
           height: 50px;
@@ -94,6 +95,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
       function check(host, node, expected, msg) {
         var ripple = host.getRipple();
+        Polymer.dom.flush();
         MockInteractions.down(node);
         assert.equal(ripple.ripples.length > 0, expected, msg);
         MockInteractions.up(node);
