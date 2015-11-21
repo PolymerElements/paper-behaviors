@@ -146,7 +146,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             });
 
             test('tap #separate', function() {
-                assertInteractionCausesRipple(ripple, ripple.$.separate, false, '#separate')
+              assertInteractionCausesRipple(ripple, ripple.$.separate, false, '#separate')
             });
           });
 
@@ -166,7 +166,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             });
 
             test('tap separate', function() {
-                assertInteractionCausesRipple(ripple, ripple.$.separate, true, '#separate')
+              assertInteractionCausesRipple(ripple, ripple.$.separate, true, '#separate')
             });
           });
         });
@@ -202,7 +202,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             test('tap text', function() {
               assertInteractionAtLocationCausesRipple(ripple, ripple.$.wrapper, textLocation, true, 'text');
             });
-
           });
 
           suite('container = wrapper', function() {
@@ -227,7 +226,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             test('tap text', function() {
               assertInteractionAtLocationCausesRipple(ripple, ripple.$.wrapper, textLocation, true, 'text');
             });
-
           });
 
           suite('container = separate', function() {
@@ -252,7 +250,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             test('tap text', function() {
               assertInteractionAtLocationCausesRipple(ripple, ripple.$.wrapper, textLocation, false, 'text');
             });
-
           });
         });
 
@@ -280,7 +277,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             test('tap source', function() {
               assertInteractionCausesRipple(ripple, source, true, '#source');
             });
-
           });
 
           suite('container = wrapper', function() {
@@ -291,7 +287,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             });
 
             test('tap host', function() {
-            assertInteractionCausesRipple(ripple, ripple, false, 'ripple');
+              assertInteractionCausesRipple(ripple, ripple, false, 'ripple');
             });
 
             test('tap wrapper', function() {
@@ -299,15 +295,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             });
 
             test('tap separate', function() {
-
-                assertInteractionCausesRipple(ripple, ripple.$.separate, false, '#separate')
+              assertInteractionCausesRipple(ripple, ripple.$.separate, false, '#separate')
             });
 
             test('tap source', function() {
-
-                  assertInteractionCausesRipple(ripple, source, true, '#source');
+              assertInteractionCausesRipple(ripple, source, true, '#source');
             });
-
           });
 
           suite('container = separate', function() {
@@ -318,7 +311,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             });
 
             test('tap host', function() {
-            assertInteractionCausesRipple(ripple, ripple, false, 'ripple');
+              assertInteractionCausesRipple(ripple, ripple, false, 'ripple');
             });
 
             test('tap wrapper', function() {
@@ -326,16 +319,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             });
 
             test('tap separate', function() {
-
-                assertInteractionCausesRipple(ripple, ripple.$.separate, true, '#separate')
+              assertInteractionCausesRipple(ripple, ripple.$.separate, true, '#separate')
             });
 
             test('tap source', function() {
-
-                  assertInteractionCausesRipple(ripple, source, false, '#source');
+              assertInteractionCausesRipple(ripple, source, false, '#source');
             });
-
-
           });
         });
       });
