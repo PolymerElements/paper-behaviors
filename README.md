@@ -16,17 +16,6 @@ _[Demo and API Docs](https://elements.polymer-project.org/elements/paper-behavio
 
 <!-- No docs for Polymer.PaperButtonBehavior found. -->
 
-##Polymer.PaperRippleBehavior
-
-
-`Polymer.PaperRippleBehavior` dynamically implements a ripple
-when the element has focus via pointer or keyboard.
-
-NOTE: This behavior is intended to be used in conjunction with and after
-`Polymer.IronButtonState` and `Polymer.IronControlState`.
-
-
-
 ##Polymer.PaperCheckedElementBehavior
 
 
@@ -39,5 +28,16 @@ and is compatible with having a ripple effect.
 
 
 `Polymer.PaperInkyFocusBehavior` implements a ripple when the element has keyboard focus.
+
+
+
+##Polymer.PaperRippleBehavior
+
+
+`Polymer.PaperRippleBehavior` dynamically implements a ripple
+when the element has focus via pointer or keyboard.
+
+NOTE: This behavior is intended to be used in conjunction with and after
+`Polymer.IronButtonState` and `Polymer.IronControlState`.
 
 
