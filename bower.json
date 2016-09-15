@@ -1,6 +1,6 @@
 {
   "name": "paper-behaviors",
-  "version": "1.0.12",
+  "version": "2.0.0",
   "description": "Common behaviors across the paper elements",
   "authors": [
     "The Polymer Authors"
@@ -25,18 +25,29 @@
   "license": "http://polymer.github.io/LICENSE.txt",
   "homepage": "https://github.com/PolymerElements/paper-behaviors",
   "dependencies": {
-    "iron-behaviors": "PolymerElements/iron-behaviors#^1.0.0",
-    "iron-checked-element-behavior": "PolymerElements/iron-checked-element-behavior#^1.0.0",
-    "paper-ripple": "PolymerElements/paper-ripple#^1.0.0",
-    "polymer": "Polymer/polymer#^1.2.1"
+    "iron-behaviors": "PolymerElements/iron-behaviors#2.0-preview",
+    "iron-checked-element-behavior": "PolymerElements/iron-checked-element-behavior#2.0-preview",
+    "paper-ripple": "PolymerElements/paper-ripple#2.0-preview",
+    "polymer": "Polymer/polymer#2.0-preview"
   },
   "devDependencies": {
     "iron-component-page": "polymerelements/iron-component-page#^1.0.0",
-    "iron-test-helpers": "polymerelements/iron-test-helpers#^1.0.0",
+    "iron-test-helpers": "polymerelements/iron-test-helpers#2.0-preview",
     "paper-material": "PolymerElements/paper-material#^1.0.0",
-    "test-fixture": "PolymerElements/test-fixture#^1.0.0",
+    "test-fixture": "PolymerElements/test-fixture#custom-elements-v1",
     "web-component-tester": "^4.0.0",
-    "webcomponentsjs": "webcomponents/webcomponentsjs#^0.7.0"
+    "webcomponentsjs": "webcomponents/webcomponentsjs#v1"
   },
-  "ignore": []
+  "ignore": [],
+  "resolutions": {
+    "iron-checked-element-behavior": "2.0-preview",
+    "paper-ripple": "2.0-preview",
+    "iron-behaviors": "2.0-preview",
+    "webcomponentsjs": "v1",
+    "iron-validatable-behavior": "2.0-preview",
+    "iron-a11y-keys-behavior": "2.0-preview",
+    "iron-meta": "2.0-preview",
+    "polymer": "2.0-preview",
+    "test-fixture": "custom-elements-v1"
+  }
 }
