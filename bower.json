@@ -33,7 +33,7 @@
   "devDependencies": {
     "iron-component-page": "polymerelements/iron-component-page#^1.0.0",
     "iron-test-helpers": "polymerelements/iron-test-helpers#2.0-preview",
-    "paper-material": "PolymerElements/paper-material#^1.0.0",
+    "paper-material": "PolymerElements/paper-material#2.0-preview",
     "test-fixture": "PolymerElements/test-fixture#custom-elements-v1",
     "web-component-tester": "^4.0.0",
     "webcomponentsjs": "webcomponents/webcomponentsjs#v1"
@@ -48,6 +48,9 @@
     "iron-a11y-keys-behavior": "2.0-preview",
     "iron-meta": "2.0-preview",
     "polymer": "2.0-preview",
-    "test-fixture": "custom-elements-v1"
+    "test-fixture": "custom-elements-v1",
+    "paper-material": "2.0-preview",
+    "iron-flex-layout": "2.0-preview",
+    "paper-styles": "2.0-preview"
   }
 }
