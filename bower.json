@@ -50,7 +50,6 @@
       "devDependencies": {
         "iron-component-page": "polymerelements/iron-component-page#^1.0.0",
         "iron-test-helpers": "polymerelements/iron-test-helpers#^1.0.0",
-        "paper-material": "PolymerElements/paper-material#^1.0.0",
         "paper-styles": "PolymerElements/paper-styles#^1.0.0",
         "test-fixture": "PolymerElements/test-fixture#^1.0.0",
         "web-component-tester": "^4.0.0",

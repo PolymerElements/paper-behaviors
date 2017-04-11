@@ -9,9 +9,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 -->
 
 <link rel="import" href="../../polymer/polymer.html">
-<!-- required for 1.0 version of demo -->
-<link rel="import" href="../../paper-material/paper-material.html">
-<!-- required for 2.0 versopm of demo -->
 <link rel="import" href="../../paper-styles/element-styles/paper-material.html">
 <link rel="import" href="../paper-button-behavior.html">
 
@@ -34,7 +31,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         cursor: pointer;
       }
 
-      paper-material {
+      .content {
         border-radius: inherit;
         padding: 16px;
       }
@@ -52,9 +49,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     </style>
 
     <!-- when using paper-material from paper-styles you must add a paper-material class -->
-    <paper-material class="content paper-material" elevation$="[[elevation]]" animated>
+    <div class="content paper-material" elevation$="[[elevation]]" animated>
       <slot></slot>
-    </paper-material>
+    </div>
   </template>
 
   <script>
