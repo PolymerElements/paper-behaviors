@@ -84,6 +84,13 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       if (this.hasRipple()) {
         this._ripple.uiUpAction();
       }
+    },
+
+    _focusChanged: function(focused) {
+      Polymer.IronButtonStateImpl._focusChanged.call(this, focused);
+      if (!focused && this.hasRipple()) {
+        this._ripple.uiUpAction();
+      }
     }
   };
 
