@@ -26,6 +26,7 @@
   "homepage": "https://github.com/PolymerElements/paper-behaviors",
   "dependencies": {
     "iron-behaviors": "PolymerElements/iron-behaviors#^1.0.0",
+    "paper-ripple": "PolymerElements/paper-ripple#^1.0.0",
     "iron-checked-element-behavior": "PolymerElements/iron-checked-element-behavior#^1.0.0",
     "paper-ripple": "PolymerElements/paper-ripple#^1.0.0",
     "polymer": "Polymer/polymer#^1.2.1"
