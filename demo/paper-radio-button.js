@@ -1,18 +1,9 @@
-<!--
-@license
-Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
-This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
-The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
-The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
-Code distributed by Google as part of the polymer project is also
-subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
--->
-
-<link rel="import" href="../../polymer/polymer.html">
-<link rel="import" href="../paper-checked-element-behavior.html">
-
-<dom-module id="paper-radio-button">
-  <template>
+import '../../polymer/polymer.js';
+import { PaperCheckedElementBehavior } from '../paper-checked-element-behavior.js';
+import { Polymer } from '../../polymer/lib/legacy/polymer-fn.js';
+import { PaperInkyFocusBehaviorImpl } from '../paper-inky-focus-behavior.js';
+Polymer({
+  _template: `
     <style>
       :host {
         display: inline-block;
@@ -87,28 +78,24 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       <div id="offRadio"></div>
       <div id="onRadio"></div>
     </div>
-  </template>
+`,
 
-  <script>
-    Polymer({
-      is: 'paper-radio-button',
+  is: 'paper-radio-button',
 
-      behaviors: [
-        Polymer.PaperCheckedElementBehavior
-      ],
+  behaviors: [
+    PaperCheckedElementBehavior
+  ],
 
-      hostAttributes: {
-        role: 'radio'
-      },
+  hostAttributes: {
+    role: 'radio'
+  },
 
-      ready: function() {
-        this.toggles = true;
-      },
+  ready: function() {
+    this.toggles = true;
+  },
 
-      _createRipple: function() {
-        this._rippleContainer = this.$.radioContainer;
-        return Polymer.PaperInkyFocusBehaviorImpl._createRipple.call(this);
-      }
-    });
-  </script>
-</dom-module>
+  _createRipple: function() {
+    this._rippleContainer = this.$.radioContainer;
+    return PaperInkyFocusBehaviorImpl._createRipple.call(this);
+  }
+});

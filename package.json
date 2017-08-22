@@ -1,0 +1,29 @@
+{
+  "name": "@polymer/paper-behaviors",
+  "flat": true,
+  "version": "3.0.0-pre.1",
+  "description": "Common behaviors across the paper elements",
+  "contributors": [
+    "The Polymer Authors"
+  ],
+  "keywords": [
+    "web-components",
+    "web-component",
+    "polymer",
+    "paper",
+    "behavior"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/PolymerElements/paper-behaviors"
+  },
+  "license": "http://polymer.github.io/LICENSE.txt",
+  "homepage": "https://github.com/PolymerElements/paper-behaviors",
+  "dependencies": {
+    "@polymer/iron-behaviors": "^3.0.0-pre.1",
+    "@polymer/iron-checked-element-behavior": "^3.0.0-pre.1",
+    "@polymer/paper-ripple": "^3.0.0-pre.1",
+    "@polymer/polymer": "^3.0.0-pre.1"
+  },
+  "devDependencies": {}
+}
