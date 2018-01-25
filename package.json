@@ -1,0 +1,10 @@
+{
+  "name": "@polymer/paper-behaviors",
+  "private": true,
+  "description": "Common behaviors across the paper elements",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/PolymerElements/paper-behaviors"
+  },
+  "license": "http://polymer.github.io/LICENSE.txt"
+}
