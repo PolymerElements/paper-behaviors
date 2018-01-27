@@ -28,6 +28,15 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
        * If true, the element will not produce a ripple effect when interacted
        * with via the pointer.
        */
+      noInk: {
+        type: Boolean,
+        observer: '_noInkChanged'
+      },
+
+      /**
+       * This property is a temporary alias to noInk until version 2.x
+       *
+       */
       noink: {
         type: Boolean,
         observer: '_noinkChanged'
@@ -71,7 +80,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     ensureRipple: function(optTriggeringEvent) {
       if (!this.hasRipple()) {
         this._ripple = this._createRipple();
-        this._ripple.noink = this.noink;
+        this._ripple.noInk = this.noInk;
         var rippleContainer = this._rippleContainer || this.root;
         if (rippleContainer) {
           Polymer.dom(rippleContainer).appendChild(this._ripple);
@@ -119,10 +128,15 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       return element;
     },
 
-    _noinkChanged: function(noink) {
+    _noInkChanged: function(noInk) {
       if (this.hasRipple()) {
-        this._ripple.noink = noink;
+        this._ripple.noInk = noInk;
       }
-    }
+    },
+
+    _noinkChanged: function(noInk) {
+      console.warn("This field will be deprecated with the next major version of this component, use no-ink instead");
+      this.noInk = noInk;
+    },
   };
 </script>
