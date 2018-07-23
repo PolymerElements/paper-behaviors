@@ -1,6 +1,11 @@
 language: node_js
 sudo: 'false'
-before_script: npm install -g polymer-cli
+before_script:
+    - npm install -g polymer-cli
+    - git checkout package-lock.json
+    - >-
+      npm run format && git diff --exit-code || (echo -e '\n\033[31mERROR:\033[0m
+      Project is not formatted. Please run "npm run format".' && false)
 env:
   global:
     - secure: Q7DqYWnSrdVLOmxyUl/WK/gLklAlX+dmBhZB2WZzWVLocR58L6TbD24Qw47G5fVwGmGbiaEHlYPEsvzcAZhHgVmepq+IpPA68clm4juq+gL8quphB9xHiGCLdkNTTdKtLyU0PkIha6WkMrQ/swODaeEqvKYQQWxY5hBSguQtCYI=
@@ -16,4 +21,3 @@ dist: trusty
 cache:
   directories:
     - node_modules
-
