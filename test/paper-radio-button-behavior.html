@@ -15,12 +15,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
   <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script>
   <script src="../node_modules/wct-browser-legacy/browser.js"></script>
-  <script src="../../test-fixture/test-fixture-mocha.js"></script>
-  <script src="../../iron-test-helpers/mock-interactions.js" type="module"></script>
-
-  <script type="module" src="../../polymer/polymer-legacy.js"></script>
-  <script type="module" src="../../test-fixture/test-fixture.js"></script>
-  <script type="module" src="./test-radio-button.js"></script>
 </head>
 <body>
 
@@ -32,7 +26,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
   <script type="module">
     import '@polymer/polymer/polymer-legacy.js';
-    import '@polymer/test-fixture/test-fixture.js';
+    import '@polymer/iron-test-helpers/mock-interactions.js';
     import './test-radio-button.js';
     suite('basic', function() {
       var button;
