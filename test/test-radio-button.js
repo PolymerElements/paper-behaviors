@@ -27,9 +27,9 @@ Polymer({
         height: 48px;
       }
     </style>
-    
+
     <div id="container">
-      <paper-ripple id="ink" class="circle" center=""></paper-ripple>
+      <paper-ripple id="ink" class="circle" center></paper-ripple>
     </div>
 `,
 

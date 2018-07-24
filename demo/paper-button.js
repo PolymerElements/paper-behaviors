@@ -52,7 +52,7 @@ Polymer({
     </style>
 
     <!-- when using paper-material from paper-styles you must add a paper-material class -->
-    <div class="content paper-material" elevation\$="[[elevation]]" animated="">
+    <div class="content paper-material" elevation\$="[[elevation]]" animated>
       <slot></slot>
     </div>
 `,
