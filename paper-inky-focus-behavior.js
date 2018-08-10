@@ -16,10 +16,10 @@ import {IronControlState} from '@polymer/iron-behaviors/iron-control-state.js';
 import {PaperRippleBehavior} from './paper-ripple-behavior.js';
 
 /**
- * `Polymer.PaperInkyFocusBehavior` implements a ripple when the element has
- * keyboard focus.
+ * `PaperInkyFocusBehavior` implements a ripple when the element has keyboard
+ * focus.
  *
- * @polymerBehavior Polymer.PaperInkyFocusBehavior
+ * @polymerBehavior PaperInkyFocusBehavior
  */
 export const PaperInkyFocusBehaviorImpl = {
   observers: ['_focusedChanged(receivedFocusFromKeyboard)'],
@@ -42,7 +42,7 @@ export const PaperInkyFocusBehaviorImpl = {
   }
 };
 
-/** @polymerBehavior Polymer.PaperInkyFocusBehavior */
+/** @polymerBehavior */
 export const PaperInkyFocusBehavior = [
   IronButtonState,
   IronControlState,

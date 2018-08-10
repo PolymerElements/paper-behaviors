@@ -15,7 +15,7 @@ import {IronControlState} from '@polymer/iron-behaviors/iron-control-state.js';
 
 import {PaperRippleBehavior} from './paper-ripple-behavior.js';
 
-/** @polymerBehavior Polymer.PaperButtonBehavior */
+/** @polymerBehavior PaperButtonBehavior */
 export const PaperButtonBehaviorImpl = {
   properties: {
     /**
