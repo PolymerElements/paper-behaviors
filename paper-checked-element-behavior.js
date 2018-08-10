@@ -16,10 +16,10 @@ import {PaperInkyFocusBehavior} from './paper-inky-focus-behavior.js';
 import {PaperRippleBehavior} from './paper-ripple-behavior.js';
 
 /**
- * Use `Polymer.PaperCheckedElementBehavior` to implement a custom element
- * that has a `checked` property similar to `Polymer.IronCheckedElementBehavior`
- * and is compatible with having a ripple effect.
- * @polymerBehavior Polymer.PaperCheckedElementBehavior
+ * Use `PaperCheckedElementBehavior` to implement a custom element that has a
+ * `checked` property similar to `IronCheckedElementBehavior` and is compatible
+ * with having a ripple effect.
+ * @polymerBehavior PaperCheckedElementBehavior
  */
 export const PaperCheckedElementBehaviorImpl = {
   /**
@@ -50,7 +50,7 @@ export const PaperCheckedElementBehaviorImpl = {
   }
 };
 
-/** @polymerBehavior Polymer.PaperCheckedElementBehavior */
+/** @polymerBehavior */
 export const PaperCheckedElementBehavior = [
   PaperInkyFocusBehavior,
   IronCheckedElementBehavior,

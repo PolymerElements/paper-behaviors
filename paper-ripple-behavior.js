@@ -15,13 +15,13 @@ import {IronButtonStateImpl} from '@polymer/iron-behaviors/iron-button-state.js'
 import {dom} from '@polymer/polymer/lib/legacy/polymer.dom.js';
 
 /**
- * `Polymer.PaperRippleBehavior` dynamically implements a ripple
- * when the element has focus via pointer or keyboard.
+ * `PaperRippleBehavior` dynamically implements a ripple when the element has
+ * focus via pointer or keyboard.
  *
  * NOTE: This behavior is intended to be used in conjunction with and after
- * `Polymer.IronButtonState` and `Polymer.IronControlState`.
+ * `IronButtonState` and `IronControlState`.
  *
- * @polymerBehavior Polymer.PaperRippleBehavior
+ * @polymerBehavior PaperRippleBehavior
  */
 export const PaperRippleBehavior = {
   properties: {
