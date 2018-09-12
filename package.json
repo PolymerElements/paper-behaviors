@@ -16,9 +16,9 @@
   "license": "BSD-3-Clause",
   "devDependencies": {
     "webmat": "^0.2.0",
-    "@polymer/iron-test-helpers": "^3.0.0-pre.24",
-    "@polymer/paper-styles": "^3.0.0-pre.24",
-    "@polymer/test-fixture": "^4.0.0-pre.2",
+    "@polymer/iron-test-helpers": "^3.0.0-pre.25",
+    "@polymer/paper-styles": "^3.0.0-pre.25",
+    "@polymer/test-fixture": "^4.0.1",
     "wct-browser-legacy": "^1.0.1",
     "@webcomponents/webcomponentsjs": "^2.0.0",
     "@polymer/gen-typescript-declarations": "^1.5.1"
@@ -31,9 +31,9 @@
   "version": "3.0.0-pre.26",
   "author": "The Polymer Authors",
   "dependencies": {
-    "@polymer/iron-behaviors": "^3.0.0-pre.24",
-    "@polymer/iron-checked-element-behavior": "^3.0.0-pre.24",
-    "@polymer/paper-ripple": "^3.0.0-pre.24",
+    "@polymer/iron-behaviors": "^3.0.0-pre.25",
+    "@polymer/iron-checked-element-behavior": "^3.0.0-pre.25",
+    "@polymer/paper-ripple": "^3.0.0-pre.25",
     "@polymer/polymer": "^3.0.0"
   }
 }
